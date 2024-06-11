@@ -56,7 +56,11 @@ namespace cervantesforms
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-
+            var pessoa = new Pessoa(Convert.ToInt32(txtID.Text),txtNome.Text,txtCPF.Text,txtEmail.Text);
+            var pessoaRepositorio = new PessoaRepositorio();
+            pessoaRepositorio.Atualizar(pessoa);
+            LimparCampos();
+            BuscarTodasAsPessoas(pessoaRepositorio);
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
