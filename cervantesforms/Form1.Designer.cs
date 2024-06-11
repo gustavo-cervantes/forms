@@ -50,6 +50,7 @@
             this.dgPessoa.Name = "dgPessoa";
             this.dgPessoa.Size = new System.Drawing.Size(596, 150);
             this.dgPessoa.TabIndex = 0;
+            this.dgPessoa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPessoa_CellClick);
             // 
             // label1
             // 
@@ -125,6 +126,7 @@
             this.btnAdicionar.TabIndex = 9;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click_1);
             // 
             // btnEditar
             // 
@@ -134,6 +136,7 @@
             this.btnEditar.TabIndex = 10;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnRemover
             // 
@@ -143,6 +146,7 @@
             this.btnRemover.TabIndex = 11;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // Cervantes
             // 
@@ -163,6 +167,7 @@
             this.Controls.Add(this.dgPessoa);
             this.Name = "Cervantes";
             this.Text = "Cervantes";
+            this.Load += new System.EventHandler(this.Cervantes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgPessoa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

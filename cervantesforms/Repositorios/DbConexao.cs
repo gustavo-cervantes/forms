@@ -14,7 +14,7 @@ namespace cervantesforms.Repositorios
         private readonly IDbConnection connection;
         public DbConexao()
         {
-            connection = new NpgsqlConnection("Server=127.0.0.1;Port=5432;Database=cadastropessoa_canal;User Id;postgres;Password=gustavoroldao;");
+            connection = new NpgsqlConnection("Server=127.0.0.1;Port=5432;Database=cadastropessoa_canal;User Id=postgres;Password=gustavoroldao;");
         }
 
         public IDbConnection GetConnection()

@@ -15,37 +15,39 @@ namespace cervantesforms.Repositorios
         public void Inserir(Pessoa pessoa)
         {
             using NpgsqlConnection conexao = (NpgsqlConnection)new DbConexao().GetConnection();
-            conexao.Execute("INSERT INTO PESSOA (NOME, CPF, EMAIL) VALUES(@NOME, @CPF, @EMAIL);")
+            conexao.Execute("INSERT INTO PESSOA (NOME,CPF,EMAIL) VALUES(@nome,@cpf,@email);",
                 new
                 {
                     nome = pessoa.Nome,
-                    Cpf = pessoa.Cpf,
+                    cpf = pessoa.Cpf,
                     email = pessoa.Email,
+                    id = pessoa.Id
                 });
+              
 
         }
 
         public void Atualizar(Pessoa pessoa)
         {
             using NpgsqlConnection conexao = (NpgsqlConnection)new DbConexao().GetConnection();
-            conexao.Execute("UPDATE PESSOA SET NOME = @nome, CPF = @cpf, EMAIL = @email WHERE ID = @id;")
+            conexao.Execute("UPDATE PESSOA SET NOME = @nome, CPF = @cpf, EMAIL = @email WHERE ID = @id;",
                 new
                 {
                     nome = pessoa.Nome,
                     Cpf = pessoa.Cpf,
                     email = pessoa.Email,
                     id = pessoa.Id
-                }); ;
+                });
         }
 
         public void Deletar(int id)
         {
             using NpgsqlConnection conexao = (NpgsqlConnection)new DbConexao().GetConnection();
-            conexao.Execute("DELETE FROM PESSOA WHERE ID = @id;")
+            conexao.Execute("DELETE FROM PESSOA WHERE ID = @id;",
                 new
                 {
                     id
-                }); ;
+                });
         }
 
         public Pessoa BuscarPessoaPeloId(int id)
@@ -58,7 +60,7 @@ namespace cervantesforms.Repositorios
         public IEnumerable<Pessoa> BuscarTodasPessoas()
         {
             using NpgsqlConnection conexao = (NpgsqlConnection)new DbConexao().GetConnection();
-            return conexao.Query<Pessoa>(@"SELECT * FROM PESSOA");
+            return conexao.Query<Pessoa>(@"SELECT * FROM PESSOA ");
         }
     } 
 }   

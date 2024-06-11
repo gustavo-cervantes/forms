@@ -23,7 +23,7 @@ namespace cervantesforms
 
         }
 
-        private void btnAdicionar_Click(object sender, EventArgs e)
+        private void btnAdicionar_Click_1(object sender, EventArgs e)
         {
             var pessoa = new Pessoa(0,txtNome.Text, txtCPF.Text, txtEmail.Text);
             var pessoaRepositorio = new PessoaRepositorio();
@@ -48,10 +48,32 @@ namespace cervantesforms
             dgPessoa.DataSource = pessoas.ToList();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Cervantes_Load(object sender, EventArgs e)
         {
             var pessoaRepositorio = new PessoaRepositorio();
-            BuscarTodasAsPessoas(PessoaRepositorio);
+            BuscarTodasAsPessoas(pessoaRepositorio);
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgPessoa_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+            if (dgv == null)
+                return;
+
+            txtID.Text = dgv.CurrentRow.Cells["Id"]?.Value?.ToString();
+            txtNome.Text = dgv.CurrentRow.Cells["Nome"]?.Value?.ToString();
+            txtCPF.Text = dgv.CurrentRow.Cells["Cpf"]?.Value?.ToString();
+            txtEmail.Text = dgv.CurrentRow.Cells["Email"]?.Value?.ToString();
         }
     }
 }
