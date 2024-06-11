@@ -162,7 +162,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgPessoa);
             this.Name = "Cervantes";
-            this.Text = "Form1";
+            this.Text = "Cervantes";
             ((System.ComponentModel.ISupportInitialize)(this.dgPessoa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

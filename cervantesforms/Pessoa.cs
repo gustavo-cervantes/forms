@@ -9,7 +9,7 @@ namespace cervantesforms
     public class Pessoa
     {
         private Pessoa() { }
-        public Pessoa(int? id, string? nome, string? cpf, string? email)
+        public Pessoa(int id, string? nome, string? cpf, string? email)
         {
             Id = id;
             Nome = nome;

@@ -21,7 +21,7 @@ namespace cervantesforms.Repositorios
                     nome = pessoa.Nome,
                     Cpf = pessoa.Cpf,
                     email = pessoa.Email,
-                }); ;
+                });
 
         }
 
