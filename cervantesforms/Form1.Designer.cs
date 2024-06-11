@@ -1,6 +1,6 @@
 ﻿namespace cervantesforms
 {
-    partial class Form1
+    partial class Cervantes
     {
         /// <summary>
         /// Required designer variable.
@@ -144,7 +144,7 @@
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // Cervantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -161,7 +161,7 @@
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgPessoa);
-            this.Name = "Form1";
+            this.Name = "Cervantes";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dgPessoa)).EndInit();
             this.ResumeLayout(false);

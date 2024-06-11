@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace cervantesforms
 {
-    public partial class Form1 : Form
+    public partial class Cervantes : Form
     {
-        public Form1()
+        public Cervantes()
         {
             InitializeComponent();
         }
