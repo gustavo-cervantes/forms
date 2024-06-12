@@ -54,20 +54,6 @@ namespace cervantesforms
             BuscarTodasAsPessoas(pessoaRepositorio);
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            var pessoa = new Pessoa(Convert.ToInt32(txtID.Text),txtNome.Text,txtCPF.Text,txtEmail.Text);
-            var pessoaRepositorio = new PessoaRepositorio();
-            pessoaRepositorio.Atualizar(pessoa);
-            LimparCampos();
-            BuscarTodasAsPessoas(pessoaRepositorio);
-        }
-
-        private void btnRemover_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgPessoa_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridView dgv = sender as DataGridView;
@@ -79,5 +65,24 @@ namespace cervantesforms
             txtCPF.Text = dgv.CurrentRow.Cells["Cpf"]?.Value?.ToString();
             txtEmail.Text = dgv.CurrentRow.Cells["Email"]?.Value?.ToString();
         }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            var pessoa = new Pessoa(Convert.ToInt32(txtID.Text),txtNome.Text,txtCPF.Text,txtEmail.Text);
+            var pessoaRepositorio = new PessoaRepositorio();
+            pessoaRepositorio.Atualizar(pessoa);
+            LimparCampos();
+            BuscarTodasAsPessoas(pessoaRepositorio);
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            var pessoaRepositorio = new PessoaRepositorio();
+            pessoaRepositorio.Deletar(Convert.ToInt32(txtID.Text));
+            LimparCampos();
+            BuscarTodasAsPessoas(pessoaRepositorio);
+        }
+
+       
     }
 }
