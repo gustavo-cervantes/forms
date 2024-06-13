@@ -25,13 +25,27 @@ namespace cervantesforms
 
         private void btnAdicionar_Click_1(object sender, EventArgs e)
         {
-            var pessoa = new Pessoa(0,txtNome.Text, txtCPF.Text, txtEmail.Text);
-            var pessoaRepositorio = new PessoaRepositorio();
-            pessoaRepositorio.Inserir(pessoa);
-            LimparCampos();
-            BuscarTodasAsPessoas(pessoaRepositorio);
+            if (string.IsNullOrWhiteSpace(txtNome.Text) || string.IsNullOrWhiteSpace(txtCPF.Text) || string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                MessageBox.Show("Todos os campos devem ser preenchidos.");
+                return;
+            }
+
+            try
+            {
+                var pessoa = new Pessoa(0, txtNome.Text, txtCPF.Text, txtEmail.Text);
+                var pessoaRepositorio = new PessoaRepositorio();
+                pessoaRepositorio.Inserir(pessoa);
+                LimparCampos();
+                BuscarTodasAsPessoas(pessoaRepositorio);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro ao adicionar a pessoa: " + ex.Message);
+            }
         }
-            
+
+
         private void LimparCampos()
         {
             txtCPF.Text = string.Empty;
@@ -68,21 +82,43 @@ namespace cervantesforms
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            var pessoa = new Pessoa(Convert.ToInt32(txtID.Text),txtNome.Text,txtCPF.Text,txtEmail.Text);
-            var pessoaRepositorio = new PessoaRepositorio();
-            pessoaRepositorio.Atualizar(pessoa);
-            LimparCampos();
-            BuscarTodasAsPessoas(pessoaRepositorio);
-        }
-                                                                    
-        private void btnRemover_Click(object sender, EventArgs e)
-        {
-            var pessoaRepositorio = new PessoaRepositorio();
-            pessoaRepositorio.Deletar(Convert.ToInt32(txtID.Text));
-            LimparCampos();
-            BuscarTodasAsPessoas(pessoaRepositorio);
+            try
+            {
+                int id = Convert.ToInt32(txtID.Text);
+                var pessoa = new Pessoa(id, txtNome.Text, txtCPF.Text, txtEmail.Text);
+                var pessoaRepositorio = new PessoaRepositorio();
+                pessoaRepositorio.Atualizar(pessoa);
+                LimparCampos();
+                BuscarTodasAsPessoas(pessoaRepositorio);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("ID deve ser um número válido.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
         }
 
-       
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = Convert.ToInt32(txtID.Text);
+                var pessoaRepositorio = new PessoaRepositorio();
+                pessoaRepositorio.Deletar(id);
+                LimparCampos();
+                BuscarTodasAsPessoas(pessoaRepositorio);
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("ID deve ser um número válido.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+            }
+        }
     }
 }
