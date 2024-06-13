@@ -74,7 +74,7 @@ namespace cervantesforms
             LimparCampos();
             BuscarTodasAsPessoas(pessoaRepositorio);
         }
-
+                                                                    
         private void btnRemover_Click(object sender, EventArgs e)
         {
             var pessoaRepositorio = new PessoaRepositorio();
